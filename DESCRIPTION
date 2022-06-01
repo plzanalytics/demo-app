@@ -13,6 +13,8 @@ Imports:
     dplyr,
     DT,
     golem (>= 0.3.2),
+    plotly,
+    shinipsum,
     shiny (>= 1.7.1),
     shinydashboard,
     shinyjs
