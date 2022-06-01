@@ -15,9 +15,11 @@ app_ui <- function(request) {
         titleWidth = 350
       ),
     shinydashboard::dashboardSidebar(
-      width = 40,
+       width = 120,
       shinydashboard::sidebarMenu(
-        shinydashboard::menuItem("Instructions", tabName = "instruction", icon = icon("info"))
+        shinydashboard::menuItem("Instructions", tabName = "instruction", icon = icon("info")),
+        shinydashboard::menuItem("Dashboard", tabName = "dashboard", icon = icon("tachometer-alt")),
+        shinydashboard::menuItem("Download", tabName = "download", icon = icon("download"))
       )
     ),
     shinydashboard::dashboardBody(
@@ -40,7 +42,10 @@ app_ui <- function(request) {
         .skin-blue .main-header .navbar .sidebar-toggle:hover{
          background-color: #00402C;
         }
-           ')))
+           '))),
+      tags$head(
+        tags$script(src = "sidebar.js")
+      )
     )
   )
 )

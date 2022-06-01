@@ -16,6 +16,7 @@
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
 usethis::use_package("shinydashboard")
+usethis::use_package("shinyjs")
 usethis::use_package("dplyr")
 usethis::use_package("DT")
 
@@ -24,7 +25,10 @@ attachment::att_amend_desc()
 ## Add modules ----
 ## Create a module infrastructure in R/
 golem::add_module(name = "instruction", with_test = TRUE) # Name of the module
-golem::add_module(name = "name_of_module2", with_test = TRUE) # Name of the module
+golem::add_module(name = "dashboard", with_test = TRUE) # Name of the module
+golem::add_module(name = "download", with_test = TRUE) # Name of the module
+
+
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*
