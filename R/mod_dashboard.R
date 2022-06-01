@@ -80,10 +80,7 @@ mod_dashboard_ui <- function(id){
         ),
         shinydashboard::box(
           width = 9, height = 300,
-          title = "Table",
-          DT::dataTableOutput(
-            ns("table")
-          )
+          title = "Table"
         )
       )
     )
@@ -113,9 +110,6 @@ mod_dashboard_server <- function(id){
       shinipsum::random_ggplotly()
     })
 
-    output$table <- DT::renderDataTable({
-      shinipsum::random_DT()
-    })
 
   })
 }
