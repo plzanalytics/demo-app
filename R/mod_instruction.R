@@ -9,7 +9,7 @@
 #' @importFrom shiny NS tagList
 mod_instruction_ui <- function(id){
   ns <- NS(id)
-  shinydashboard::tabItem("instruction" )
+  tabItem("instruction" )
 }
 
 #' instruction Server Functions

@@ -24,7 +24,9 @@ app_ui <- function(request) {
     ),
     shinydashboard::dashboardBody(
       shinydashboard::tabItems(
-        mod_instruction_ui("instruction")
+        mod_instruction_ui("instruction"),
+        mod_dashboard_ui("dashboard"),
+        mod_download_ui("download")
       ), tags$head(tags$style(HTML('
         /* logo */
           .skin-blue .main-header .logo {

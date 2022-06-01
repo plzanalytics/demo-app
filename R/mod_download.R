@@ -4,28 +4,37 @@
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'
-#' @noRd 
+#' @noRd
 #'
-#' @importFrom shiny NS tagList 
+#' @importFrom shiny NS tagList
 mod_download_ui <- function(id){
   ns <- NS(id)
-  tagList(
- 
+ tabItem(
+   "download",
+   h3("Download Cleaned Billing Data"),
+   h4("Download excel file that contains ... what it will contain"),
+  box(
+    title = "Download Data",
+    width = 8,
+    fluidRow(
+      downloadButton(ns("download_file"))
+    )
   )
+ )
 }
-    
+
 #' download Server Functions
 #'
-#' @noRd 
+#' @noRd
 mod_download_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
- 
+
   })
 }
-    
+
 ## To be copied in the UI
 # mod_download_ui("download_1")
-    
+
 ## To be copied in the server
 # mod_download_server("download_1")
