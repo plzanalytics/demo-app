@@ -9,10 +9,41 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      h1("RockandRose")
+    shinydashboard::dashboardPage(
+      shinydashboard::dashboardHeader(
+        title = "Rock & Rose Financial App",
+        titleWidth = 350
+      ),
+    shinydashboard::dashboardSidebar(
+      width = 40,
+      shinydashboard::sidebarMenu(
+        shinydashboard::menuItem("Instructions", tabName = "instruction", icon = icon("info"))
+      )
+    ),
+    shinydashboard::dashboardBody(
+      shinydashboard::tabItems(
+        mod_instruction_ui("instruction")
+      ), tags$head(tags$style(HTML('
+        /* logo */
+          .skin-blue .main-header .logo {
+            background-color: #00402C;
+          }
+           /* logo when hovered */
+        .skin-blue .main-header .logo:hover {
+                              background-color: #00402C;
+        }
+          /* navbar (rest of the header) */
+        .skin-blue .main-header .navbar {
+                              background-color: #005440;
+        }
+        /* toggle button when hovered  */
+        .skin-blue .main-header .navbar .sidebar-toggle:hover{
+         background-color: #00402C;
+        }
+           ')))
     )
   )
+)
 }
 
 #' Add external Resources to the Application

@@ -15,6 +15,10 @@
 
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
+usethis::use_package("shinydashboard")
+usethis::use_package("dplyr")
+usethis::use_package("DT")
+
 attachment::att_amend_desc()
 
 ## Add modules ----
