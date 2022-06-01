@@ -22,6 +22,7 @@ usethis::use_package("DT")
 
 usethis::use_import_from("shinydashboard", "tabItem")
 usethis::use_import_from("shinydashboard", "box")
+usethis::use_import_from("shinydashboard", "tabBox")
 
 attachment::att_amend_desc()
 

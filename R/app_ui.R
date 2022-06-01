@@ -18,7 +18,13 @@ app_ui <- function(request) {
        width = 120,
       shinydashboard::sidebarMenu(
         shinydashboard::menuItem("Instructions", tabName = "instruction", icon = icon("info")),
-        shinydashboard::menuItem("Dashboard", tabName = "dashboard", icon = icon("tachometer-alt")),
+        shinydashboard::menuItem("Dashboard", tabName = "dashboard",
+                                 icon = icon("tachometer-alt")),
+        selectInput("catergory", "Catagory", c("1","2")),
+        sliderInput(inputId = "Profit Range", label = "Profit Range",
+                    min = 0, max = 100, step = 10, value = 50),
+        radioButtons(inputId = "team", label = "Team", choices =
+                       c("Construction", "Maintanence", "Office")),
         shinydashboard::menuItem("Download", tabName = "download", icon = icon("download"))
       )
     ),
