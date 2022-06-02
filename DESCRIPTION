@@ -1,18 +1,16 @@
 Package: RockandRose
-Title: An Amazing Shiny App
+Title: RockandRose
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "firstname",
-           family = "lastname",
-           role = c("aut", "cre"),
-           email = "your@email.com")
-Description: What the package does (one paragraph).
+Authors@R: person('Jacob', 'Braslaw', email = 'jacobbraslaw@ucsb.edu', role = c('cre', 'aut'))
+Description: Explore financial data for rock and rose landscapes llc.
 License: What license is it under?
 Imports: 
     config (>= 0.3.1),
     dplyr,
     DT,
+    flexdashboard,
     golem (>= 0.3.2),
+    pkgload,
     plotly,
     shinipsum,
     shiny (>= 1.7.1),

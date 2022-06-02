@@ -8,63 +8,68 @@
 #'
 #' @importFrom shiny NS tagList
 mod_dashboard_ui <- function(id){
+  css <- HTML("
+             .html-widget.gauge svg{
+             height: 90px:
+             }")
+
   ns <- NS(id)
   shinydashboard::tabItem("dashboard",
   fluidPage(
       fluidRow(
-        shinydashboard::box(
-          title = "box 1",
-          width = 3, height = 80
-        ),
-        shinydashboard::box(
-          title = "box 2",
-          width = 3, height = 80
-        ),
-        shinydashboard::box(
-          title = "box 3",
-          width = 3, height = 80
-        ),
-        shinydashboard::box(
-          title = "box 4",
-          width = 3, height = 80
-        )
+         shinydashboard::valueBoxOutput(
+           ns("box1"),
+           width = 3
+         ),
+         shinydashboard::valueBoxOutput(
+           ns("box2"),
+           width = 3
+         ),
+         shinydashboard::valueBoxOutput(
+           ns("box3"),
+           width = 3
+         ),
+         shinydashboard::valueBoxOutput(
+           ns("box4"),
+           width = 3
+         ),
       ),
       fluidRow(
       tabBox(
         title = "first tab box",
         id = "tab1", height = "300px",
-        tabPanel("tab1.1"
-          # plotly::plotlyOutput(ns("tab1_1"),
-          # height = 230,
-          # width = "100%")
+        tabPanel("tab1.1",
+          plotly::plotlyOutput(ns("tab1_1"),
+          height = 230,
+          width = "100%")
           ),
-        tabPanel("tab1.2"
-          # plotly::plotlyOutput(
-          # ns("tab1_2"),
-          # height = 230,
-          # width = "100%")
+        tabPanel("tab1.2",
+          plotly::plotlyOutput(
+          ns("tab1_2"),
+          height = 230,
+          width = "100%")
           ),
       ),
       tabBox(
         title = "second tab box",
         id = "tab2", height = "300px",
-        tabPanel("tab2.1"
-          # plotly::plotlyOutput(
-          # ns("tab2_1"),
-          # height = 230,
-          # width = "100%")
+        tabPanel("tab2.1",
+          plotly::plotlyOutput(
+          ns("tab2_1"),
+          height = 230,
+          width = "100%")
           ),
-        tabPanel("tab2.2"
-          # plotly::plotlyOutput(
-          # ns("tab2_2"),
-          # height = 230,
-          # width = "100%")
+        tabPanel("tab2.2",
+          plotly::plotlyOutput(
+          ns("tab2_2"),
+          height = 230,
+          width = "100%")
           ),
         )
       ),
       fluidRow(
         shinydashboard::box(
-          width = 3, height = 300,
+          width = 3, height = 325,
           selectizeInput(
             ns("employee"),
             label = "Select employee",
@@ -85,8 +90,11 @@ mod_dashboard_ui <- function(id){
           end = Sys.Date()
         )),
         shinydashboard::box(
-          width = 9, height = 300,
-          title = "Table"
+          width = 9, height = 325,
+          title = "Table",
+          DT::dataTableOutput(
+            ns("table")
+          )
         )
       )
     )
@@ -100,6 +108,36 @@ mod_dashboard_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 
+    #top row boxes
+    output$box1 <- shinydashboard::renderValueBox({
+      shinydashboard::valueBox(
+        paste0("$", "200,000"), "Month Sales",
+        color = "green"
+      )
+    })
+
+    output$box2 <- shinydashboard::renderValueBox({
+      shinydashboard::valueBox(
+        paste0("$", "210,000"), "Expected Month Sales",
+        color = "yellow"
+      )
+    })
+
+    output$box3 <- shinydashboard::renderValueBox({
+      shinydashboard::valueBox(
+        paste0("$", "5,000,000"), "YTD Sales",
+        color = "green"
+      )
+    })
+
+    output$box4 <- shinydashboard::renderValueBox({
+      shinydashboard::valueBox(
+        paste0("$", "4,050,020"), "Expected YTD Sales",
+        color = "yellow"
+      )
+    })
+
+    # second row tables
     output$tab1_1 <-  plotly::renderPlotly({
       shinipsum::random_ggplotly()
     })
@@ -116,7 +154,14 @@ mod_dashboard_server <- function(id){
       shinipsum::random_ggplotly()
     })
 
-
+    #3rd row table
+    output$table <- DT::renderDataTable({
+      DT::datatable(iris,
+      options = list(dom = "lbfrtip", buttons = c("copy", "excel"),
+                     pagelength = nrow(iris),
+                     scrollY = 150,
+                     autowidth = T))
+                       })
   })
 }
 

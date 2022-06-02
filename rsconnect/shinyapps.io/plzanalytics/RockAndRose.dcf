@@ -1,0 +1,13 @@
+name: RockAndRose
+title: RockAndRose
+username:
+account: plzanalytics
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6416171
+bundleId: 5970053
+url: https://plzanalytics.shinyapps.io/RockAndRose/
+when: 1654140404.05318
+lastSyncTime: 1654140404.05319
+asMultiple: FALSE
+asStatic: FALSE

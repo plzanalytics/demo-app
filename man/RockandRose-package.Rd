@@ -4,12 +4,12 @@
 \name{RockandRose-package}
 \alias{RockandRose}
 \alias{RockandRose-package}
-\title{RockandRose: An Amazing Shiny App}
+\title{RockandRose: RockandRose}
 \description{
-What the package does (one paragraph).
+Explore financial data for rock and rose landscapes llc.
 }
 \author{
-\strong{Maintainer}: firstname lastname \email{your@email.com}
+\strong{Maintainer}: Jacob Braslaw \email{jacobbraslaw@ucsb.edu}
 
 }
 \keyword{internal}

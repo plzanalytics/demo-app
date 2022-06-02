@@ -17,6 +17,7 @@
 ## Amend DESCRIPTION with dependencies read from package code parsing
 usethis::use_package("shinydashboard")
 usethis::use_package("shinyjs")
+usethis::use_package("flexdashboard")
 usethis::use_package("dplyr")
 usethis::use_package("DT")
 usethis::use_package("shinipsum")
